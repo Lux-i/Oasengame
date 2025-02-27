@@ -12,9 +12,7 @@ public:
 	Field(Type);
 	Type getType();
 	friend class Board;
-	bool found;
 private:
 	Type type;
-
 };
 
