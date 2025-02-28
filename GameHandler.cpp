@@ -32,7 +32,7 @@ void GameHandler::startGame() {
 #pragma region handleInput
 
 			if (input == EXIT_COMMAND) {
-				std::cout << "Prematurely ended game";
+				std::cout << "You decide to end your journey and head back to your camp";
 				break;
 				inputValid = true;
 			}

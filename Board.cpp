@@ -37,13 +37,14 @@ void Board::generateBoard(int posX, int posY) {
 				type = Field::RELIC;
 				generatedRelics++;
 			}
-			board[x][y] = type;
+			board[x][y] = Field(type);
 		}
 	}
 	//remove field type from given position (should be player position)
-	Field posField = board[posX][posY];
-	if (posField.getType() == Field::RELIC) generatedRelics--;
-	posField = Field::EMPTY;
+	if (board[posX][posY].getType() == Field::RELIC) {
+		generatedRelics--;
+	}
+	board[posX][posY] = Field(Field::EMPTY);
 	if (generatedRelics == 0) {
 		//spawn relic if not generated
 		int randX;

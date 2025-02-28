@@ -7,7 +7,7 @@
 class GameHandler
 {
 public:
-	GameHandler();
+	GameHandler() = default;
 	void startGame();
 private:
 	void renderScreen();
