@@ -2,15 +2,12 @@
 #include <string>
 #include <iostream>
 
-GameLog::GameLog() {
-	entries = 0;
-}
-
 void GameLog::addLog(const std::string& message) {
 	if (entries < 3) {
 		logarr[entries] = message;
 		entries++;
-	} else {
+	}
+	else {
 		moveArrElementsForward();
 		logarr[entries - 1] = message;
 	}
@@ -26,4 +23,13 @@ void GameLog::moveArrElementsForward() {
 	for (int i = 0; i < entries - 1; ++i) {
 		logarr[i] = logarr[i + 1];
 	}
+}
+
+/**
+ * doesn't really reset entries
+ * just resets the counter back to 0
+ */
+
+void GameLog::resetEntries() {
+	entries = 0;
 }

@@ -10,16 +10,8 @@ void Player::heal(int amount) {
 	health += amount;
 }
 
-void Player::addRelic() {
-	relics++;
-}
-
 int Player::getHealth() {
 	return health;
-}
-
-int Player::getRelics() {
-	return relics;
 }
 
 bool Player::handleInput(char input) {

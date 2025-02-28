@@ -6,12 +6,13 @@
 class GameLog
 {
 public:
-	GameLog();
+	GameLog() = default;
 	void addLog(const std::string&);
 	void printLog();
+	void resetEntries();
 private:
 	std::string logarr[3];
-	int entries;
+	int entries = 0;
 	void moveArrElementsForward();
 };
 

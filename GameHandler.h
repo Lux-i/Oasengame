@@ -15,5 +15,7 @@ private:
 	Board board;
 	Player player;
 	GameLog gameLog;
+	void handleEvents();
+	void advanceWorld();
+	int difficulty = 0;
 };
-
