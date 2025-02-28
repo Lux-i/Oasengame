@@ -8,7 +8,7 @@ public:
 	Board();
 	Field getTile(int, int);
 	Field getTile(Position);
-	void generateBoard();
+	void generateBoard(int, int);
 	void renderBoard(Position);
 	int getRelicAmount();
 	void foundTile(Position);

@@ -129,7 +129,9 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Field.cpp" />
+    <ClCompile Include="GameHandler.cpp" />
     <ClCompile Include="GameLog.cpp" />
     <ClCompile Include="Oasengame.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -138,7 +140,9 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="Enemies.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="GameHandler.h" />
     <ClInclude Include="GameLog.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Position.h" />

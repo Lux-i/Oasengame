@@ -1,12 +1,12 @@
 #include "Player.h"
 #include "Position.h"
+#include "Entity.h"
 
 #pragma once
-class Enemy
+class Enemy : public Entity
 {
 public:
 	Enemy();
-	Position position;
 	void attack(Player);
 	void moveTo(Position);
 	void moveTo(Player);

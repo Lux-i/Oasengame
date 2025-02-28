@@ -6,13 +6,17 @@
 #include "GameLog.h"
 #include "GameHandler.h"
 
-int main() {
-	GameHandler game;
-	Board board;
-	Player player;
-	GameLog gameLog;
+/**
+ * handles the main game loop and input
+ */
+void GameHandler::startGame() {
 
-	std::string inputStr;
+	constexpr char UP = 'w';
+	constexpr char LEFT = 'a';
+	constexpr char DOWN = 's';
+	constexpr char RIGHT = 'd';
+	constexpr char EXIT_COMMAND = 'x';
+
 	char input;
 	bool inputValid;
 
@@ -21,50 +25,21 @@ int main() {
 		//extra do while loop, in case given input is invalid (only rendering and asking for input again)
 		do
 		{
-			inputValid = true;
-#pragma region renderScreen
-			std::system(CLEAR_SCREEN);
-			board.renderBoard(player.getPosition());
-			std::cout << "\nHealth: " << player.getHealth() << " | Relics: " << player.getRelics();
-			std::cout << "\n\n";
-			gameLog.printLog();
-#pragma endregion
+			renderScreen();
 
-			//get input
-			std::cout << "\nUse wasd to move, x to exit the game\nYour action: ";
-			std::getline(std::cin, inputStr);
-			if (!inputStr.empty()) {
-				input = inputStr[0];
-			}
-			else {
-				//set input to a char that executes no action in case
-				input = 'o';
-			}
+			input = getInput();
 
-			//handle Input
-			switch (input) {
-				//movement cases
-				//if player tries to make an illegal movement, just don't move
-			case UP:
-				player.move(Player::UP);
-				break;
-			case LEFT:
-				player.move(Player::LEFT);
-				break;
-			case DOWN:
-				player.move(Player::DOWN);
-				break;
-			case RIGHT:
-				player.move(Player::RIGHT);
-				break;
-				//ending case (premature)
-			case EXIT_COMMAND:
+#pragma region handleInput
+
+			if (input == EXIT_COMMAND) {
 				std::cout << "Prematurely ended game";
 				break;
-			default:
-				//no case matched earlier => input invalid, receive loop
-				inputValid = false;
+				inputValid = true;
 			}
+			else {
+				inputValid = player.handleInput(input);
+			}
+#pragma endregion
 		} while (inputValid == false);
 
 		//gameLogic
@@ -95,4 +70,32 @@ int main() {
 
 
 	} while (input != EXIT_COMMAND);
+}
+
+void GameHandler::renderScreen() {
+#ifdef _WIN32
+	const char* CLEAR_SCREEN = "cls";
+#else
+	const char* CLEAR_SCREEN = "clear";
+#endif
+
+	std::system(CLEAR_SCREEN);
+	board.renderBoard(player.getPosition());
+	std::cout << "\nHealth: " << player.getHealth() << " | Relics: " << player.getRelics();
+	std::cout << "\n\n";
+	gameLog.printLog();
+
+}
+
+char GameHandler::getInput() {
+	std::string inputStr;
+	std::cout << "\nUse wasd to move, x to exit the game\nYour action: ";
+	std::getline(std::cin, inputStr);
+	if (!inputStr.empty()) {
+		return inputStr[0];
+	}
+	else {
+		//set input to a char that executes no action in case
+		return 'o';
+	}
 }

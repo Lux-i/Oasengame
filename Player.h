@@ -1,18 +1,23 @@
-#include "Position.h"
+#include "Entity.h"
 
 #pragma once
-class Player
+class Player : public Entity
 {
 public:
-	Player();
-	Position position;
+	Player() = default;
 	void takeDamage(int);
 	void heal(int);
 	void addRelic();
 	int getHealth();
 	int getRelics();
+	/**
+	* Gets the input char of the main loop.
+	* If the input corresponds to a movement, it is being executed
+	* @return returns if given input was valid for this function or not
+	*/
+	bool handleInput(char);
 private:
-	int health;
-	int relics;
+	int health = 5;
+	int relics = 0;
 };
 

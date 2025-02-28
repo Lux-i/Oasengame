@@ -3,7 +3,7 @@
 
 Board::Board() {
 	generatedRelics = 0;
-	generateBoard();
+	generateBoard(0, 0);
 }
 
 Field Board::getTile(int x, int y) {
@@ -14,8 +14,8 @@ Field Board::getTile(Position position) {
 	return board[position.x][position.y];
 }
 
-void Board::generateBoard() {
-	srand(time(NULL));
+void Board::generateBoard(int posX, int posY) {
+	srand(time(nullptr));
 	for (int x = 0; x < 5; x++) {
 		for (int y = 0; y < 5; y++) {
 			//generate Field-type randomly
@@ -25,21 +25,35 @@ void Board::generateBoard() {
 			if (r <= 4) {
 				//first 40%
 				//field already empty, do nothing
-			} else if (r <= 8) {
+			}
+			else if (r <= 8) {
 				//next 40%
 				type = Field::DANGER;
-			} else if (r <= 9) {
+			}
+			else if (r <= 9) {
 				type = Field::WELL;
-			} else {
+			}
+			else {
 				type = Field::RELIC;
 				generatedRelics++;
 			}
 			board[x][y] = type;
 		}
 	}
+	//remove field type from given position (should be player position)
+	Field posField = board[posX][posY];
+	if (posField.getType() == Field::RELIC) generatedRelics--;
+	posField = Field::EMPTY;
 	if (generatedRelics == 0) {
 		//spawn relic if not generated
-		board[rand() % 5][rand() % 5] = Field::RELIC;
+		int randX;
+		int randY;
+		do {
+			randX = rand() % 5;
+			randY = rand() % 5;
+			//random position would be on given position => rerandomzie
+		} while (randX == posX && randY == posY);
+		board[randX][randY] = Field::RELIC;
 		generatedRelics++;
 	}
 }

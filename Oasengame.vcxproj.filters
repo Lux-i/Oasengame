@@ -36,6 +36,12 @@
     <ClCompile Include="GameLog.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="GameHandler.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h">
@@ -54,6 +60,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="GameLog.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GameHandler.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
