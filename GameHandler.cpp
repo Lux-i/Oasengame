@@ -98,7 +98,7 @@ void GameHandler::handleEvents() {
 	switch (fieldType) {
 		//not calling foundTile() outside of cases so already empty fields won't be unnecessary reassigned as empty
 	case Field::DANGER:
-		if (rand() % 6 + 1 <= 1) {
+		if (rand() % 6 + 1 <= std::min(1 + (difficulty / 10), 3)) {
 			player.takeDamage(1);
 			gameLog.addLog("You enter a dangerous zone. You are clumsy and receive 1HP damage.");
 		}
@@ -129,7 +129,7 @@ void GameHandler::advanceWorld() {
 	player.relics = 0;
 	gameLog.resetEntries();
 	Position playerPos = player.getPosition();
-	board.generateBoard(playerPos.x, playerPos.y);
+	board.generateBoard(playerPos.x, playerPos.y, difficulty);
 	//copy of relicFound message, as the log of the last relic being found never gets rendered
 	gameLog.addLog("You see something glistening in the distance. You walk closer and find a relic lying in the sand. Multiple minutes pass by. You notice a strange glow inside of your bag. You look and see the relics combine together into a single sphere of energy. Suddenly a flash of light blinds you and you find yourself in another location. After a moment of panic you find relieve in seeing the mountain where your camp is located. You decide to continue your Journey");
 }

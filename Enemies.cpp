@@ -68,7 +68,7 @@ Entity::Movement Enemy::bestMove(Position pos) {
 }
 
 Kacper::Kacper() {
-	cooldown = 2;
+	cooldown = 4;
 	currentCooldown = cooldown;
 	symbol = 'x';
 }
@@ -81,7 +81,7 @@ void Kacper::handleMovement(Position pos) {
 }
 
 Nicolas::Nicolas() {
-	cooldown = 1;
+	cooldown = 2;
 	currentCooldown = cooldown;
 	symbol = 'v';
 }

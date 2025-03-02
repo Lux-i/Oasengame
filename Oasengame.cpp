@@ -27,7 +27,7 @@ int main() {
 			std::cout << "Relic fields are needed to progress the game. Collect all relics on the board and get to the next difficulty\n";
 			std::cout << "Well fields will heal you by 1hp\n";
 			std::cout << "\n";
-			std::cout << "As the game grows in difficulty, wells will spawn less and danger fields will have a greater chance to damage you\n";
+			std::cout << "As the game grows in difficulty, danger fields will spawn more often and will have a greater chance to damage you\n";
 			std::cout << "\n";
 		}
 	} while (inputStr == "h");

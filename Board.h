@@ -11,7 +11,7 @@ public:
 	Board();
 	Field getTile(int, int);
 	Field getTile(Position);
-	void generateBoard(int, int);
+	void generateBoard(int, int, int);
 	void renderBoard(Player, std::array<Enemy*, 2>);
 	int getRelicAmount();
 	void foundTile(Position);
