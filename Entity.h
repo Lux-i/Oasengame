@@ -5,16 +5,18 @@ class Entity
 {
 public:
 	Entity() = default;
-	Entity(int x, int y) : position(x, y) {}
 	enum Movement {
 		UP,
 		LEFT,
 		DOWN,
-		RIGHT
+		RIGHT,
+		NONE
 	};
 	Position getPosition();
 	void move(Movement);
+	char getSymbol();
 protected:
 	Position position;
+	char symbol = '*';
 };
 

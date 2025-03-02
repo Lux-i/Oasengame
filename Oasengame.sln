@@ -9,6 +9,8 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Pre-Release|x64 = Pre-Release|x64
+		Pre-Release|x86 = Pre-Release|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -17,6 +19,10 @@ Global
 		{5F1A6A19-C43F-4890-A295-04C9673306AD}.Debug|x64.Build.0 = Debug|x64
 		{5F1A6A19-C43F-4890-A295-04C9673306AD}.Debug|x86.ActiveCfg = Debug|Win32
 		{5F1A6A19-C43F-4890-A295-04C9673306AD}.Debug|x86.Build.0 = Debug|Win32
+		{5F1A6A19-C43F-4890-A295-04C9673306AD}.Pre-Release|x64.ActiveCfg = Pre-Release|x64
+		{5F1A6A19-C43F-4890-A295-04C9673306AD}.Pre-Release|x64.Build.0 = Pre-Release|x64
+		{5F1A6A19-C43F-4890-A295-04C9673306AD}.Pre-Release|x86.ActiveCfg = Pre-Release|Win32
+		{5F1A6A19-C43F-4890-A295-04C9673306AD}.Pre-Release|x86.Build.0 = Pre-Release|Win32
 		{5F1A6A19-C43F-4890-A295-04C9673306AD}.Release|x64.ActiveCfg = Release|x64
 		{5F1A6A19-C43F-4890-A295-04C9673306AD}.Release|x64.Build.0 = Release|x64
 		{5F1A6A19-C43F-4890-A295-04C9673306AD}.Release|x86.ActiveCfg = Release|Win32

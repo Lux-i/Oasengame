@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "GameLog.h"
 #include "GameHandler.h"
+#include <array>
 
 /**
  * handles the main game loop and input
@@ -36,14 +37,31 @@ void GameHandler::startGame() {
 				inputValid = true;
 			}
 			else {
-				inputValid = player.handleInput(input);
+				std::array<Position, 2> enemyPositions;
+				int i = 0;
+				for (Enemy* enemy : enemies) {
+					enemyPositions[i] = enemy->getPosition();
+					i++;
+				}
+				inputValid = player.handleInput(input, enemyPositions);
 			}
+
 #pragma endregion
 		} while (inputValid == false);
 
 		handleEvents();
 
+		//ends the loop and the game
+		if (player.getHealth() == 0) {
+			input = EXIT_COMMAND;
+			gameLog.addLog("You feel week and decide to head back to camp. You are disappointed you didn't find what you were looking for.");
+			renderScreen();
+		}
+
 	} while (input != EXIT_COMMAND);
+	for (Enemy* enemy : enemies) {
+		delete enemy;
+	}
 }
 
 void GameHandler::renderScreen() {
@@ -54,7 +72,7 @@ void GameHandler::renderScreen() {
 #endif
 
 	std::system(CLEAR_SCREEN);
-	board.renderBoard(player.getPosition());
+	board.renderBoard(player, enemies);
 	std::cout << "\nHealth: " << player.getHealth() << " | Relics: " << player.relics;
 	std::cout << "\n\n";
 	gameLog.printLog();
@@ -101,6 +119,9 @@ void GameHandler::handleEvents() {
 		break;
 	}
 	if (player.relics == board.getRelicAmount()) advanceWorld();
+	for (Enemy* enemy : enemies) {
+		enemy->action(player);
+	}
 }
 
 void GameHandler::advanceWorld() {

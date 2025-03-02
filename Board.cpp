@@ -1,8 +1,8 @@
 #include "Board.h"
 #include <iostream>
+#include <array>
 
 Board::Board() {
-	generatedRelics = 0;
 	generateBoard(0, 0);
 }
 
@@ -60,12 +60,14 @@ void Board::generateBoard(int posX, int posY) {
 	}
 }
 
-void Board::renderBoard(Position position) {
+void Board::renderBoard(Player player, std::array<Enemy*, 2> enemies) {
 	for (int x = 0; x < 5; x++) {
 		for (int y = 0; y < 5; y++) {
 			char symbol = '*';
-			if (position.x == x && position.y == y) {
-				symbol = 'o';
+			if (player.getPosition().x == x && player.getPosition().y == y) symbol = player.getSymbol();
+
+			for (Enemy* enemy : enemies) {
+				if (enemy->getPosition().x == x && enemy->getPosition().y == y) symbol = enemy->getSymbol();
 			}
 			std::cout << symbol << " ";
 		}
